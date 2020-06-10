@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditHelpTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditHelpLabel_helpPK_seq}" for="helpPK_seq" />
+                    <h:inputText id="helpPK_seq" value="#{helpController.selected.helpPK.seq}" title="#{bundle.EditHelpTitle_helpPK_seq}" required="true" requiredMessage="#{bundle.EditHelpRequiredMessage_helpPK_seq}"/>
+                    <h:outputLabel value="#{bundle.EditHelpLabel_helpPK_topic}" for="helpPK_topic" />
+                    <h:inputText id="helpPK_topic" value="#{helpController.selected.helpPK.topic}" title="#{bundle.EditHelpTitle_helpPK_topic}" required="true" requiredMessage="#{bundle.EditHelpRequiredMessage_helpPK_topic}"/>
+                    <h:outputLabel value="#{bundle.EditHelpLabel_info}" for="info" />
+                    <h:inputText id="info" value="#{helpController.selected.info}" title="#{bundle.EditHelpTitle_info}" />
+                </h:panelGrid>
+                <h:commandLink action="#{helpController.update}" value="#{bundle.EditHelpSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditHelpViewLink}"/>
+                <br />
+                <h:commandLink action="#{helpController.prepareList}" value="#{bundle.EditHelpShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditHelpIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
